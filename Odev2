@@ -1,0 +1,38 @@
+<?php
+/* 
+ * Meyveler adında Çok boyutlu bir dizi oluşturuldu. Bu dizide girilen siparişe göre ücret yazıldı. 
+ */
+    $meyveler = array(
+     1=>array( 'meyve_ad'=>'elma', 'fiyat'=>2.00, 'adet'=>26 ),
+     2=>array( 'meyve_ad'=>'portakal', 'fiyat'=>1.50, 'adet'=>62),
+     3=>array( 'meyve_ad'=>'armut','fiyat'=>3.00,'adet'=>25),
+     4=>array('meyve_ad'=>'karpuz','fiyat'=>2.75 ,'adet'=>63),
+     5=>array('meyve_ad'=>'incir','fiyat'=>2.60 ,'adet'=>80),
+     6=>array('meyve_ad'=>'hurma','fiyat'=>2.50 ,'adet'=>12),
+     7=>array('meyve_ad'=>'elma','fiyat'=>3.75 ,'adet'=>24),
+     8=>array('meyve_ad'=>'kiraz','fiyat'=>2.50 ,'adet'=>6),
+     9=>array('meyve_ad'=>'kavun','fiyat'=>3.75 ,'adet'=>9),
+     10=>array('meyve_ad'=>'mandalina','fiyat'=>1.75 ,'adet'=>77),
+    );
+$siparis_no= rand(1,20);
+$siparis_adet=rand(1,100);
+
+
+siparis($siparis_no,$siparis_adet,$meyveler);
+
+function siparis($siparis_no, $siparis_adet, $meyveler) {
+    if ($siparis_no > 10) {
+        echo 'no ' . $siparis_no . '<br>';
+        echo 'hata oluştu' . '<br>';
+    } elseif ($siparis_adet > $meyveler[$siparis_no]['adet']) {
+        echo 'no ' . $siparis_no . '<br>';
+        echo 'adet' . $siparis_adet . '<br>';
+        echo 'yeterli stok yok' . '<br>';
+    } else {
+        echo 'no ' . $siparis_no . '<br>';
+        echo 'adet' . $siparis_adet . '<br>';
+        $toplam = $siparis_adet * ($meyveler[$siparis_no]["fiyat"]);
+        echo $meyveler[$siparis_no]["meyve_ad"];
+        echo $toplam;
+    }
+}
